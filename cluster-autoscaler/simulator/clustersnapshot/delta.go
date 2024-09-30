@@ -20,6 +20,7 @@ import (
 	"fmt"
 
 	apiv1 "k8s.io/api/core/v1"
+	"k8s.io/autoscaler/cluster-autoscaler/dynamicresources"
 	"k8s.io/autoscaler/cluster-autoscaler/simulator/framework"
 	"k8s.io/klog/v2"
 	schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework"
@@ -424,8 +425,12 @@ func (snapshot *DeltaClusterSnapshot) AddNodeInfo(nodeInfo *framework.NodeInfo) 
 }
 
 // Initialize implements ClusterSnapshot.
-func (snapshot *DeltaClusterSnapshot) Initialize(nodes []*apiv1.Node, scheduledPods []*apiv1.Pod) error {
+func (snapshot *DeltaClusterSnapshot) Initialize(nodes []*apiv1.Node, scheduledPods []*apiv1.Pod, draSnapshot dynamicresources.Snapshot) error {
 	snapshot.Clear()
+
+	if snapshot.draEnabled {
+		// TODO(DRA): Implement DRA support, handle draSnapshot.
+	}
 
 	knownNodes := make(map[string]bool)
 	for _, node := range nodes {
