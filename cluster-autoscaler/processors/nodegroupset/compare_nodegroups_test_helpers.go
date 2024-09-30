@@ -54,9 +54,9 @@ func BuildBasicNodeGroups(context *context.AutoscalingContext) (*framework.NodeI
 	provider.AddNode("ng2", n2)
 	provider.AddNode("ng3", n3)
 
-	ni1 := framework.NewNodeInfo(n1)
-	ni2 := framework.NewNodeInfo(n2)
-	ni3 := framework.NewNodeInfo(n3)
+	ni1 := framework.NewNodeInfo(n1, nil)
+	ni2 := framework.NewNodeInfo(n2, nil)
+	ni3 := framework.NewNodeInfo(n3, nil)
 
 	context.CloudProvider = provider
 	return ni1, ni2, ni3

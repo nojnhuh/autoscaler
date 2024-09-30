@@ -276,7 +276,7 @@ func setupTest(t *testing.T, nodes []*apiv1.Node, prs []*provreqwrapper.Provisio
 		machineTypes := []string{"large-machine"}
 		template := BuildTestNode("large-node-template", 100, 100)
 		SetNodeReadyState(template, true, time.Now())
-		nodeInfoTemplate := framework.NewNodeInfo(template)
+		nodeInfoTemplate := framework.NewNodeInfo(template, nil)
 		machineTemplates := map[string]*framework.NodeInfo{
 			"large-machine": nodeInfoTemplate,
 		}

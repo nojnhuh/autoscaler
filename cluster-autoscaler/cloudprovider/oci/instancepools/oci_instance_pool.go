@@ -186,7 +186,7 @@ func (ip *InstancePoolNodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error)
 	}
 
 	nodeInfo := framework.NewNodeInfo(
-		node,
+		node, nil,
 		&framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(ip.id)},
 		&framework.PodInfo{Pod: ocicommon.BuildCSINodePod()},
 	)

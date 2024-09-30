@@ -269,7 +269,7 @@ func (ng *brightboxNodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 			Conditions:  cloudprovider.BuildReadyConditions(),
 		},
 	}
-	nodeInfo := framework.NewNodeInfo(&node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(ng.Id())})
+	nodeInfo := framework.NewNodeInfo(&node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(ng.Id())})
 	return nodeInfo, nil
 }
 

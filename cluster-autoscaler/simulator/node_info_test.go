@@ -221,7 +221,7 @@ func TestTemplateNodeInfoFromExampleNodeInfo(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			exampleNodeInfo := framework.NewNodeInfo(tc.node)
+			exampleNodeInfo := framework.NewNodeInfo(tc.node, nil)
 			for _, pod := range tc.pods {
 				exampleNodeInfo.AddPod(&framework.PodInfo{Pod: pod})
 			}

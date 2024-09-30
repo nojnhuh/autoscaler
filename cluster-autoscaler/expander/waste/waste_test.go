@@ -73,7 +73,7 @@ func makeNodeInfo(cpu int64, memory int64, pods int64) *framework.NodeInfo {
 	node.Status.Allocatable = node.Status.Capacity
 	SetNodeReadyState(node, true, time.Time{})
 
-	nodeInfo := framework.NewNodeInfo(node)
+	nodeInfo := framework.NewNodeInfo(node, nil)
 
 	return nodeInfo
 }

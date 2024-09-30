@@ -214,7 +214,7 @@ func scheduleAll(toSchedule []*budgets.NodeGroupView, scheduler *GroupDeletionSc
 			return fmt.Errorf("failed to get target size for node group %q: %s", bucket.Group.Id(), err)
 		}
 		for _, node := range bucket.Nodes {
-			scheduler.ScheduleDeletion(framework.NewNodeInfo(node), bucket.Group, bucketSize, false)
+			scheduler.ScheduleDeletion(framework.NewNodeInfo(node, nil), bucket.Group, bucketSize, false)
 		}
 	}
 	return nil

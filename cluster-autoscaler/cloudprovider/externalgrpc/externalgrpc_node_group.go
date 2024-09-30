@@ -227,7 +227,7 @@ func (n *NodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 		n.nodeInfo = new(*framework.NodeInfo)
 		return nil, nil
 	}
-	nodeInfo := framework.NewNodeInfo(pbNodeInfo)
+	nodeInfo := framework.NewNodeInfo(pbNodeInfo, nil)
 	n.nodeInfo = &nodeInfo
 	return nodeInfo, nil
 }

@@ -110,8 +110,8 @@ func TestFindSimilarNodeGroupsAzureByLabel(t *testing.T) {
 	provider.AddNode("ng1", n1)
 	provider.AddNode("ng2", n2)
 
-	ni1 := framework.NewNodeInfo(n1)
-	ni2 := framework.NewNodeInfo(n2)
+	ni1 := framework.NewNodeInfo(n1, nil)
+	ni2 := framework.NewNodeInfo(n2, nil)
 
 	nodeInfosForGroups := map[string]*framework.NodeInfo{
 		"ng1": ni1, "ng2": ni2,
@@ -139,7 +139,7 @@ func TestFindSimilarNodeGroupsAzureByLabel(t *testing.T) {
 	n3 := BuildTestNode("n1", 1000, 1000)
 	provider.AddNodeGroup("ng3", 1, 10, 1)
 	provider.AddNode("ng3", n3)
-	ni3 := framework.NewNodeInfo(n3)
+	ni3 := framework.NewNodeInfo(n3, nil)
 	nodeInfosForGroups["ng3"] = ni3
 	ng3, _ := provider.NodeGroupForNode(n3)
 

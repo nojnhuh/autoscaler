@@ -195,7 +195,7 @@ func (asg *AutoScalingGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	nodeInfo := framework.NewNodeInfo(node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.groupName)})
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.groupName)})
 	return nodeInfo, nil
 }
 

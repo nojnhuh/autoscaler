@@ -380,7 +380,7 @@ func (asg *Asg) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	nodeInfo := framework.NewNodeInfo(node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.Name)})
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.Name)})
 	return nodeInfo, nil
 }
 

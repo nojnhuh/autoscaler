@@ -191,7 +191,7 @@ func (asg *Asg) TemplateNodeInfo() (*framework.NodeInfo, error) {
 		return nil, err
 	}
 
-	nodeInfo := framework.NewNodeInfo(node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.id)})
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(asg.id)})
 	return nodeInfo, nil
 }
 

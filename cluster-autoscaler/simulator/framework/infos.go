@@ -18,6 +18,7 @@ package framework
 
 import (
 	apiv1 "k8s.io/api/core/v1"
+	resourceapi "k8s.io/api/resource/v1alpha3"
 	schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework"
 )
 
@@ -30,18 +31,25 @@ type NodeInfo struct {
 	// accessed via .NodeInfo.Pods[i], and the internal one via .Pods[i]. CA code normally only needs to
 	// access the Pod, so iterating over the internal version should be enough.
 	Pods []*PodInfo
+
+	// LocalResourceSlices contains all node-local ResourceSlices exposed by this Node.
+	LocalResourceSlices []*resourceapi.ResourceSlice
 }
 
 // PodInfo contains all necessary information about a Pod that Cluster Autoscaler needs to track.
 type PodInfo struct {
 	// This type embeds *apiv1.Pod to make the accesses easier - most of the code just needs to access the Pod.
 	*apiv1.Pod
+
+	// NeededResourceClaims contains ResourceClaim objects needed by the Pod.
+	NeededResourceClaims []*resourceapi.ResourceClaim
 }
 
 // NewNodeInfo returns a new internal NodeInfo from the provided data.
-func NewNodeInfo(node *apiv1.Node, pods ...*PodInfo) *NodeInfo {
+func NewNodeInfo(node *apiv1.Node, slices []*resourceapi.ResourceSlice, pods ...*PodInfo) *NodeInfo {
 	result := &NodeInfo{
-		NodeInfo: schedulerframework.NewNodeInfo(),
+		NodeInfo:            schedulerframework.NewNodeInfo(),
+		LocalResourceSlices: slices,
 	}
 	if node != nil {
 		result.NodeInfo.SetNode(node)

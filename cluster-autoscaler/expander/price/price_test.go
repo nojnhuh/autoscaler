@@ -90,9 +90,9 @@ func TestPriceExpander(t *testing.T) {
 	ng2, _ := provider.NodeGroupForNode(n2)
 	ng3, _ := provider.NewNodeGroup("MT1", nil, nil, nil, nil)
 
-	ni1 := framework.NewNodeInfo(n1)
-	ni2 := framework.NewNodeInfo(n2)
-	ni3 := framework.NewNodeInfo(n3)
+	ni1 := framework.NewNodeInfo(n1, nil)
+	ni2 := framework.NewNodeInfo(n2, nil)
+	ni3 := framework.NewNodeInfo(n3, nil)
 	nodeInfosForGroups := map[string]*framework.NodeInfo{
 		"ng1": ni1, "ng2": ni2,
 	}

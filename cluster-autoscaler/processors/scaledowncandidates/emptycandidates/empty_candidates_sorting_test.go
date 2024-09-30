@@ -42,15 +42,15 @@ func (t *testNodeInfoGetter) GetNodeInfo(nodeName string) (*framework.NodeInfo, 
 func TestScaleDownEarlierThan(t *testing.T) {
 	nodeEmptyName := "nodeEmpty"
 	nodeEmpty := BuildTestNode(nodeEmptyName, 0, 100)
-	niEmpty := framework.NewNodeInfo(nodeEmpty)
+	niEmpty := framework.NewNodeInfo(nodeEmpty, nil)
 
 	nodeEmptyName2 := "nodeEmpty2"
 	nodeEmpty2 := BuildTestNode(nodeEmptyName2, 0, 100)
-	niEmpty2 := framework.NewNodeInfo(nodeEmpty2)
+	niEmpty2 := framework.NewNodeInfo(nodeEmpty2, nil)
 
 	nodeNonEmptyName := "nodeNonEmpty"
 	nodeNonEmpty := BuildTestNode(nodeNonEmptyName, 0, 100)
-	niNonEmpty := framework.NewNodeInfo(nodeNonEmpty)
+	niNonEmpty := framework.NewNodeInfo(nodeNonEmpty, nil)
 	pod := BuildTestPod("p1", 0, 100)
 	niNonEmpty.AddPod(&framework.PodInfo{Pod: pod})
 

@@ -254,7 +254,7 @@ func (asg *tcAsg) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	}
 	klog.V(4).Infof("Generate tencentcloud template: labels=%v taints=%v allocatable=%v", node.Labels, node.Spec.Taints, node.Status.Allocatable)
 
-	nodeInfo := framework.NewNodeInfo(node)
+	nodeInfo := framework.NewNodeInfo(node, nil)
 	return nodeInfo, nil
 }
 

@@ -53,7 +53,7 @@ func TestGetNodeInfosForGroups(t *testing.T) {
 	SetNodeReadyState(justReady5, true, now)
 
 	tn := BuildTestNode("tn", 5000, 5000)
-	tni := framework.NewNodeInfo(tn)
+	tni := framework.NewNodeInfo(tn, nil)
 
 	// Cloud provider with TemplateNodeInfo implemented.
 	provider1 := testprovider.NewTestAutoprovisioningCloudProvider(
@@ -142,7 +142,7 @@ func TestGetNodeInfosForGroupsCache(t *testing.T) {
 	SetNodeReadyState(ready6, true, now.Add(-2*time.Minute))
 
 	tn := BuildTestNode("tn", 10000, 10000)
-	tni := framework.NewNodeInfo(tn)
+	tni := framework.NewNodeInfo(tn, nil)
 
 	lastDeletedGroup := ""
 	onDeleteGroup := func(id string) error {
@@ -239,7 +239,7 @@ func TestGetNodeInfosForGroupsCache(t *testing.T) {
 	assert.False(t, found)
 
 	// Fill cache manually
-	infoNg4Node6 := framework.NewNodeInfo(ready6.DeepCopy())
+	infoNg4Node6 := framework.NewNodeInfo(ready6.DeepCopy(), nil)
 	niProcessor.nodeInfoCache = map[string]cacheItem{"ng4": {NodeInfo: infoNg4Node6, added: now}}
 	res, err = niProcessor.Process(&ctx, nodes, []*appsv1.DaemonSet{}, taints.TaintConfig{}, now)
 	// Check if cache was used
@@ -280,7 +280,7 @@ func TestGetNodeInfosCacheExpired(t *testing.T) {
 		},
 	}
 	tn := BuildTestNode("tn", 5000, 5000)
-	tni := framework.NewNodeInfo(tn)
+	tni := framework.NewNodeInfo(tn, nil)
 	// Cache expire time is set.
 	niProcessor1 := NewMixedTemplateNodeInfoProvider(&cacheTtl, false)
 	niProcessor1.nodeInfoCache = map[string]cacheItem{

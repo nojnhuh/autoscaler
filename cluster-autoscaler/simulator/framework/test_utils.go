@@ -27,9 +27,9 @@ import (
 
 // NewTestNodeInfo creates a new NodeInfo for tests.
 func NewTestNodeInfo(node *apiv1.Node, pods ...*apiv1.Pod) *NodeInfo {
-	nodeInfo := NewNodeInfo(node)
+	nodeInfo := NewNodeInfo(node, nil)
 	for _, pod := range pods {
-		nodeInfo.AddPod(&PodInfo{Pod: pod})
+		nodeInfo.AddPod(&PodInfo{Pod: pod, NeededResourceClaims: nil})
 	}
 	return nodeInfo
 }

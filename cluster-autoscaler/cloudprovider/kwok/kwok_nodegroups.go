@@ -187,7 +187,7 @@ func (nodeGroup *NodeGroup) Nodes() ([]cloudprovider.Instance, error) {
 
 // TemplateNodeInfo returns a node template for this node group.
 func (nodeGroup *NodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
-	nodeInfo := framework.NewNodeInfo(nodeGroup.nodeTemplate, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(nodeGroup.Id())})
+	nodeInfo := framework.NewNodeInfo(nodeGroup.nodeTemplate, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(nodeGroup.Id())})
 	return nodeInfo, nil
 }
 

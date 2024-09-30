@@ -366,7 +366,7 @@ func (mig *gceMig) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	if err != nil {
 		return nil, err
 	}
-	nodeInfo := framework.NewNodeInfo(node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(mig.Id())})
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(mig.Id())})
 	return nodeInfo, nil
 }
 

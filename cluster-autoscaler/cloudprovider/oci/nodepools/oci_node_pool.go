@@ -275,7 +275,7 @@ func (np *nodePool) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	}
 
 	nodeInfo := framework.NewNodeInfo(
-		node,
+		node, nil,
 		&framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(np.id)},
 		&framework.PodInfo{Pod: ocicommon.BuildFlannelPod()},
 		&framework.PodInfo{Pod: ocicommon.BuildProxymuxClientPod()},

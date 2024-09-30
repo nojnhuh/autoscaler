@@ -127,7 +127,7 @@ func TestPopulateOptionsForGrpc(t *testing.T) {
 func makeFakeNodeInfos() map[string]*framework.NodeInfo {
 	nodeInfos := make(map[string]*framework.NodeInfo)
 	for i, opt := range options {
-		nodeInfo := framework.NewNodeInfo(nodes[i])
+		nodeInfo := framework.NewNodeInfo(nodes[i], nil)
 		nodeInfos[opt.NodeGroup.Id()] = nodeInfo
 	}
 	return nodeInfos

@@ -297,7 +297,7 @@ func (n *hetznerNodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 		}
 	}
 
-	nodeInfo := framework.NewNodeInfo(&node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(n.id)})
+	nodeInfo := framework.NewNodeInfo(&node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(n.id)})
 	return nodeInfo, nil
 }
 

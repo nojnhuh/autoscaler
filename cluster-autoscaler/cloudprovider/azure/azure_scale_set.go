@@ -641,7 +641,7 @@ func (scaleSet *ScaleSet) TemplateNodeInfo() (*framework.NodeInfo, error) {
 		return nil, err
 	}
 
-	nodeInfo := framework.NewNodeInfo(node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(scaleSet.Name)})
+	nodeInfo := framework.NewNodeInfo(node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(scaleSet.Name)})
 	return nodeInfo, nil
 }
 

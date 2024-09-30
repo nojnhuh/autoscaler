@@ -236,7 +236,7 @@ func (ng *NodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	node.Status.Conditions = cloudprovider.BuildReadyConditions()
 	node.Spec.Taints = parseTaints(ng.specs.Taints)
 
-	nodeInfo := framework.NewNodeInfo(&node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(ng.p.Name)})
+	nodeInfo := framework.NewNodeInfo(&node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(ng.p.Name)})
 	return nodeInfo, nil
 }
 

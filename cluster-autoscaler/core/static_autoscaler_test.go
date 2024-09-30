@@ -332,7 +332,7 @@ func TestStaticAutoscalerRunOnce(t *testing.T) {
 	p2 := BuildTestPod("p2", 600, 100, MarkUnschedulable())
 
 	tn := BuildTestNode("tn", 1000, 1000)
-	tni := framework.NewNodeInfo(tn)
+	tni := framework.NewNodeInfo(tn, nil)
 
 	provider := testprovider.NewTestAutoprovisioningCloudProvider(
 		func(id string, delta int) error {
@@ -509,7 +509,7 @@ func TestStaticAutoscalerRunOnceWithScaleDownDelayPerNG(t *testing.T) {
 	SetNodeReadyState(n2, true, time.Now())
 
 	tn := BuildTestNode("tn", 1000, 1000)
-	tni := framework.NewNodeInfo(tn)
+	tni := framework.NewNodeInfo(tn, nil)
 
 	provider := testprovider.NewTestAutoprovisioningCloudProvider(
 		func(id string, delta int) error {
@@ -738,13 +738,13 @@ func TestStaticAutoscalerRunOnceWithAutoprovisionedEnabled(t *testing.T) {
 
 	tn1 := BuildTestNode("tn1", 100, 1000)
 	SetNodeReadyState(tn1, true, time.Now())
-	tni1 := framework.NewNodeInfo(tn1)
+	tni1 := framework.NewNodeInfo(tn1, nil)
 	tn2 := BuildTestNode("tn2", 1000, 1000)
 	SetNodeReadyState(tn2, true, time.Now())
-	tni2 := framework.NewNodeInfo(tn2)
+	tni2 := framework.NewNodeInfo(tn2, nil)
 	tn3 := BuildTestNode("tn3", 100, 1000)
 	SetNodeReadyState(tn2, true, time.Now())
-	tni3 := framework.NewNodeInfo(tn3)
+	tni3 := framework.NewNodeInfo(tn3, nil)
 
 	provider := testprovider.NewTestAutoprovisioningCloudProvider(
 		func(id string, delta int) error {

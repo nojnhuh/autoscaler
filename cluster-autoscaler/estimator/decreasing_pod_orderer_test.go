@@ -57,7 +57,7 @@ func TestPodPriorityProcessor(t *testing.T) {
 			tc := tc
 			t.Parallel()
 			processor := NewDecreasingPodOrderer()
-			nodeInfo := framework.NewNodeInfo(node)
+			nodeInfo := framework.NewNodeInfo(node, nil)
 			actual := processor.Order(tc.inputPodsEquivalentGroup, nodeInfo, nil)
 			assert.Equal(t, tc.expectedPodsEquivalentGroup, actual)
 		})

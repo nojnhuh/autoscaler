@@ -172,7 +172,7 @@ func (n *NodeGroup) TemplateNodeInfo() (*framework.NodeInfo, error) {
 	node.Status.Allocatable = node.Status.Capacity
 	node.Status.Conditions = cloudprovider.BuildReadyConditions()
 
-	nodeInfo := framework.NewNodeInfo(&node, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(n.id)})
+	nodeInfo := framework.NewNodeInfo(&node, nil, &framework.PodInfo{Pod: cloudprovider.BuildKubeProxy(n.id)})
 	return nodeInfo, nil
 }
 

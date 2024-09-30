@@ -35,7 +35,7 @@ import (
 func TestGetDaemonSetPodsForNode(t *testing.T) {
 	node := BuildTestNode("node", 1000, 1000)
 	SetNodeReadyState(node, true, time.Now())
-	nodeInfo := framework.NewNodeInfo(node)
+	nodeInfo := framework.NewNodeInfo(node, nil)
 
 	ds1 := newDaemonSet("ds1", "0.1", "100M", nil)
 	ds2 := newDaemonSet("ds2", "0.1", "100M", map[string]string{"foo": "bar"})

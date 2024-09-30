@@ -143,7 +143,7 @@ func TestZeroOrMaxNodeScaling(t *testing.T) {
 
 	n := BuildTestNode("n", 1000, 1000)
 	SetNodeReadyState(n, true, time.Time{})
-	nodeInfo := framework.NewNodeInfo(n)
+	nodeInfo := framework.NewNodeInfo(n, nil)
 
 	cases := map[string]struct {
 		testConfig      *ScaleUpTestConfig
@@ -831,7 +831,7 @@ func TestNoCreateNodeGroupMaxCoresLimitHit(t *testing.T) {
 
 	largeNode := BuildTestNode("n", 8000, 8000)
 	SetNodeReadyState(largeNode, true, time.Time{})
-	largeNodeInfo := framework.NewNodeInfo(largeNode)
+	largeNodeInfo := framework.NewNodeInfo(largeNode, nil)
 
 	config := &ScaleUpTestConfig{
 		EnableAutoprovisioning: true,
@@ -1520,7 +1520,7 @@ func TestScaleUpAutoprovisionedNodeGroup(t *testing.T) {
 
 	t1 := BuildTestNode("t1", 4000, 1000000)
 	SetNodeReadyState(t1, true, time.Time{})
-	ti1 := framework.NewNodeInfo(t1)
+	ti1 := framework.NewNodeInfo(t1, nil)
 
 	provider := testprovider.NewTestAutoprovisioningCloudProvider(
 		func(nodeGroup string, increase int) error {
@@ -1573,7 +1573,7 @@ func TestScaleUpBalanceAutoprovisionedNodeGroups(t *testing.T) {
 
 	t1 := BuildTestNode("t1", 100, 1000000)
 	SetNodeReadyState(t1, true, time.Time{})
-	ti1 := framework.NewNodeInfo(t1)
+	ti1 := framework.NewNodeInfo(t1, nil)
 
 	provider := testprovider.NewTestAutoprovisioningCloudProvider(
 		func(nodeGroup string, increase int) error {
@@ -1676,11 +1676,11 @@ func TestScaleUpToMeetNodeGroupMinSize(t *testing.T) {
 func TestScaleupAsyncNodeGroupsEnabled(t *testing.T) {
 	t1 := BuildTestNode("t1", 100, 0)
 	SetNodeReadyState(t1, true, time.Time{})
-	ti1 := framework.NewNodeInfo(t1)
+	ti1 := framework.NewNodeInfo(t1, nil)
 
 	t2 := BuildTestNode("t2", 0, 100)
 	SetNodeReadyState(t2, true, time.Time{})
-	ti2 := framework.NewNodeInfo(t2)
+	ti2 := framework.NewNodeInfo(t2, nil)
 
 	testCases := []struct {
 		upcomingNodeGroupsNames []string
