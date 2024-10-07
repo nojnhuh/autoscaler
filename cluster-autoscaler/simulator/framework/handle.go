@@ -26,6 +26,7 @@ import (
 	schedulerframework "k8s.io/kubernetes/pkg/scheduler/framework"
 	scheduler_plugins "k8s.io/kubernetes/pkg/scheduler/framework/plugins"
 	schedulerframeworkruntime "k8s.io/kubernetes/pkg/scheduler/framework/runtime"
+	schedulermetrics "k8s.io/kubernetes/pkg/scheduler/metrics"
 )
 
 // Handle exposes the scheduler Framework.
@@ -57,6 +58,7 @@ func NewHandle(informerFactory informers.SharedInformerFactory, schedConfig *con
 		opts = append(opts, schedulerframeworkruntime.WithSharedDraManager(sharedLister))
 	}
 
+	schedulermetrics.InitMetrics()
 	framework, err := schedulerframeworkruntime.NewFramework(
 		context.TODO(),
 		scheduler_plugins.NewInTreeRegistry(),
